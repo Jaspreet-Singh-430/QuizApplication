@@ -26,7 +26,7 @@
 	$data = $orderId . $orderAmount . $referenceId . $txStatus . $paymentMode . $txMsg . $txTime;
 	$hash_hmac = hash_hmac('sha256', $data, $secretkey, true);
 	$computedSignature = base64_encode($hash_hmac);
-	$_SESSION['orderId']=$orderId;
+	$_SESSION['orderId'] = $orderId;
 	if ($signature == $computedSignature) {
 		?>
 		<div class="container">
@@ -120,18 +120,18 @@
 		<?php
 	}
 	?>
-    <?php
+	<?php
 	include("../connection.php");
 	echo "<script>
 	console.log(localStorage.getItem('fullname'))
 	console.log(localStorage.getItem('usermail'))
 	</script>";
-	$ins="insert into transactions values('$orderId','$orderAmount','$referenceId','$txTime')";
+	$ins = "insert into transactions values('$orderId','$orderAmount','$referenceId','$txTime')";
 	mysqli_query($conn, $ins);
 	$upd = "update event set Status='Registered' where order_id='$orderId'";
-$result = mysqli_query($conn, $upd);
+	$result = mysqli_query($conn, $upd);
 	?>
-	<a href="../usersideEvents.php?statCode=1">Back to Home</a>
+	<a href="..Dashboard/Events/usersideEvents.php?statCode=1">Back to Home</a>
 </body>
 
 </html>

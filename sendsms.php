@@ -46,12 +46,12 @@ if (isset($_POST['btn'])) {
             echo "cURL Error #:" . $err;
         } else {
             $data = json_decode($response);
-            
-             
-                $err = "Otp Not Send";
-             
-                $ses = "Your OTP is send";
-            
+
+
+            $err = "Otp Not Send";
+
+            $ses = "Your OTP is send";
+
         }
 
 
@@ -79,7 +79,7 @@ if (isset($_POST['btn'])) {
 
     <div class=" container mt-5">
         <h1 class="text-center">Send OTP IN PHP</h1>
-        <form action="" method="post" class="mt-5">
+        <form action="./sendsms.php" method="post" class="mt-5">
             <input type="text" placeholder="Mobile number" name="num" class="form-control"><br>
             <input type="submit" class=" btn btn-primary" value="Send OTP" name="btn">
         </form>
