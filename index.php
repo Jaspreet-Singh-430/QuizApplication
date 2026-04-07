@@ -32,6 +32,7 @@
             animation-name: logo;
             animation-duration: 1s;
             animation-fill-mode: forwards;
+            margin-bottom:100px;
         }
 
         body {
@@ -52,7 +53,7 @@
 <body>
     <div class="spin_holder text-center text-white">
         <img src="./images/quiz.webp" id="quiz" alt="" height=0px width=200px class="rounded-circle">
-        <p class="display-6"><b>Loading</b> <span class="spinner-grow spinner-grow-sm text-danger"></span> <span
+        <p class="display-6 mt-5"><b>Loading</b> <span class="spinner-grow spinner-grow-sm text-danger"></span> <span
                 class="spinner-grow spinner-grow-sm text-warning"></span> <span
                 class="spinner-grow spinner-grow-sm text-success"></span></p>
         <span class="spinner-border mt-2" style="height:4rem;width:4rem;" id='spin'></span>

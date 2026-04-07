@@ -24,7 +24,7 @@ if (isset($_POST["hidName"])) {
     $date = date('Y-m-d H:i:s');
     $qname = $_POST['qname'];
     $noq = $_POST['noq'];
-    $upd = "update quiz set quiz_name='$qname', no_of_questions='$noq',Date_Created='$date',Time='$time',time_slice='$slice',lives='$life' WHERE quiz_name='$hid'";
+   $upd = "update quiz set quiz_name='$qname', no_of_questions='$noq',Date_Created='$date',Time='$time',time_slice='$slice',lives='$life' WHERE quiz_name='$hid'";
     mysqli_query($conn, $upd);
     header("location:adminDashboard.php?a=admin&b=123");
 }

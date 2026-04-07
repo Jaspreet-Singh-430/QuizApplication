@@ -128,7 +128,7 @@
 	</script>";
 	$ins = "insert into transactions values('$orderId','$orderAmount','$referenceId','$txTime')";
 	mysqli_query($conn, $ins);
-	$upd = "update event set Status='Registered' where order_id='$orderId'";
+	$upd = "update event set status='Registered' where order_id='$orderId'";
 	$result = mysqli_query($conn, $upd);
 	?>
 	<a href="..Dashboard/Events/usersideEvents.php?statCode=1">Back to Home</a>

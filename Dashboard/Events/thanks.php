@@ -24,7 +24,7 @@ $ins = "insert into leaderboard values('$cname','$cmail','$event','$score','',''
 mysqli_query($conn, $ins);
 ?>
 <?php
-$sel = "select * from leaderboard where event='$event'";
+$sel = "select * from leaderboard where Event='$event'";
 $data = mysqli_query($conn, $sel);
 $rec = mysqli_fetch_array($data);
 while ($rec = mysqli_fetch_array($data)) {

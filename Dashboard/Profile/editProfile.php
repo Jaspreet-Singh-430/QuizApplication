@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "Error updating profile: " . mysqli_error($conn);
     }
-    $sql1 = "UPDATE loggedin_users SET Name = '$fname', email='$email', Password = '$password' WHERE email='$user_id'";
+    $sql1 = "UPDATE loggedin_users SET Name = '$fname', Email='$email', Password = '$password' WHERE Email='$user_id'";
     mysqli_query($conn, $sql1);
     $_SESSION['em'] = $email;
     $_SESSION['prof'] = $profilePicturePath;

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("../connection.php");
-$create = "insert into badge_winner select * from loggedin_users inner join badges";
+$create = "insert into badge_winner select * from loggedin_users inner join badges on Email=email";
 mysqli_query($conn, $create);
 ?>
 <?php

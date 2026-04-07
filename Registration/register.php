@@ -183,7 +183,7 @@ include("../connection.php");
     <?php
     if (isset($_POST['sub'])) {
       if ($fnameErr == '' && $lnameErr == '' && $emailErr == '' && $pwdErr == '' && $captErr == '') {
-        $sel = "select * from Participants where Email='$email' OR Password='$pwd'";
+        $sel = "select * from participants where Email='$email' OR Password='$pwd'";
         $res = mysqli_query($conn, $sel);
         if (mysqli_num_rows($res) == 0) {
           echo "<script>
@@ -243,7 +243,7 @@ include("../connection.php");
       $_SESSION['fname'] = $fname;
       $_SESSION['lname'] = $lname;
       $_SESSION['cont'] = $cont;
-      $sel = "select * from Participants where Email='$email' OR Password='$pwd'";
+      $sel = "select * from participants where Email='$email' OR Password='$pwd'";
       $res = mysqli_query($conn, $sel);
       if (mysqli_num_rows($res) == 0) {
         echo "<script>

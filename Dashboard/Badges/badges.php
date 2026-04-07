@@ -29,7 +29,7 @@ session_start();
 
             <?php
             $eml = $_SESSION['em'];
-            $sel = "select DISTINCT badge_title,Badge_type,Description,Reference,badge_status from badge_winner where Badge_Type='Score Related' AND email='$eml'";
+            $sel = "select DISTINCT badge_title,Badge_type,Description,Reference,badge_status from badge_winner where Badge_type='Score Related' AND email='$eml'";
             $data3 = mysqli_query($conn, $sel);
             while ($rec3 = mysqli_fetch_array($data3)) {
 
@@ -73,7 +73,7 @@ session_start();
         <div class="row">
 
             <?php
-            $sel = "select DISTINCT badge_title,Badge_type,Description,Reference,badge_status from badge_winner where Badge_Type='Challenge Related' AND email='$eml'";
+            $sel = "select DISTINCT badge_title,Badge_type,Description,Reference,badge_status from badge_winner where Badge_type='Challenge Related' AND email='$eml'";
             $data4 = mysqli_query($conn, $sel);
             while ($rec4 = mysqli_fetch_array($data4)) {
 

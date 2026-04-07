@@ -88,6 +88,7 @@ include("../../connection.php");
                             <th scope="col">Event</th>
                             <th scope="col">Score</th>
                             <th scope="col">Ranking</th>
+                            <th scope="col">Award</th>
                         </tr>
                     </thead>
                     <tbody>
