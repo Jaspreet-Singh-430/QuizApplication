@@ -305,9 +305,9 @@ $accuracy = ($ques - $incorrect - $unattended) / $ques * 100;
             if (mysqli_num_rows($datab) > 0)
                 ;
             else {
-                $selEasy = "select * from results where percentage>60 AND difficulty='easy' AND Quiz_Type=1 AND Candidate_email='$mail'";
-                $selMed = "select * from results where percentage>60 AND difficulty='medium' AND Quiz_Type=1 AND Candidate_email='$mail'";
-                $selHard = "select * from results where percentage>60 AND difficulty='hard' AND Quiz_Type=1 AND Candidate_email='$mail'";
+                $selEasy = "select * from results where percentage>60 AND Difficulty='easy' AND Quiz_Type=1 AND Candidate_email='$mail'";
+                $selMed = "select * from results where percentage>60 AND Difficulty='medium' AND Quiz_Type=1 AND Candidate_email='$mail'";
+                $selHard = "select * from results where percentage>60 AND Difficulty='hard' AND Quiz_Type=1 AND Candidate_email='$mail'";
                 if (mysqli_num_rows(mysqli_query($conn, $selEasy)) != 0 && mysqli_num_rows(mysqli_query($conn, $selMed)) != 0 && mysqli_num_rows(mysqli_query($conn, $selHard)) != 0) {
                     echo "<script>
          alert('Congratulations, You have won <b>Meritorious badge.</b>')
@@ -337,9 +337,9 @@ $accuracy = ($ques - $incorrect - $unattended) / $ques * 100;
             if (mysqli_num_rows($datab) > 0)
                 ;
             else {
-                $selEasy = "select * from results where percentage>60 AND difficulty='easy' AND Quiz_Type=2 AND Candidate_email='$mail'";
-                $selMed = "select * from results where percentage>60 AND difficulty='medium' AND Quiz_Type=2 AND Candidate_email='$mail'";
-                $selHard = "select * from results where percentage>60 AND difficulty='hard' AND Quiz_Type=2 AND Candidate_email='$mail'";
+                $selEasy = "select * from results where percentage>60 AND Difficulty='easy' AND Quiz_Type=2 AND Candidate_email='$mail'";
+                $selMed = "select * from results where percentage>60 AND Difficulty='medium' AND Quiz_Type=2 AND Candidate_email='$mail'";
+                $selHard = "select * from results where percentage>60 AND Difficulty='hard' AND Quiz_Type=2 AND Candidate_email='$mail'";
                 if (mysqli_num_rows(mysqli_query($conn, $selEasy)) != 0 && mysqli_num_rows(mysqli_query($conn, $selMed)) != 0 && mysqli_num_rows(mysqli_query($conn, $selHard)) != 0)
                     echo "<script>
          alert('Congratulations, You have won <b>Speedster badge.</b>')

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("../connection.php");
-$create = "insert into badge_winner select * from loggedin_users inner join badges";
+$create = "insert into badge_winner select * from loggedin_users inner join badges on Email=email";
 mysqli_query($conn, $create);
 ?>
 <?php
@@ -220,7 +220,7 @@ if (isset($_SESSION["user"]) || isset($_COOKIE['usermail'])) {
                     <p style="font-size:22px;"><b>Quiz Categories</b></p>
                     <a href="../Quiz/quizplay.php?cat=music">Music</a>
                     <a href="../Quiz/quizplay.php?cat=sport_and_leisure">Sports</a>
-                    <a href="..Quiz/quizplay.php?cat=film_and_tv">Film and TV</a>
+                    <a href="../Quiz/quizplay.php?cat=film_and_tv">Film and TV</a>
                     <a href="../Quiz/quizplay.php?cat=arts_and_literature">Arts and Literature</a>
                 </div>
                 <div class="mt-2">
