@@ -170,7 +170,7 @@ session_start();
         echo $rec[0] . " " . $rec[1] . " " . $rec[2];
         $upd1 = "update registered_candidates set status='Registered' where candidate_email='$rec[2]'";
         mysqli_query($conn, $upd1);
-        $from = "jaspreet9322@gmail.com";
+        $from = $_ENV['USER_NAME'];
         $to = $rec[2];
         // echo $_SESSION['email'];
         $headers = "From:" . $from;
@@ -179,14 +179,15 @@ session_start();
          $mail = new PHPMailer(true);
         try {
     $mail->isSMTP();
-    $mail->Host       = 'smtp.gmail.com';
+    
+    $mail->Host       = $_ENV['HOST'];
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'jaspreet9322@gmail.com';
-    $mail->Password   = 'jneg phae blqx dazt'; // NOT normal password
+    $mail->Username   = $_ENV['USER_NAME'];
+    $mail->Password   = $_ENV['PASSWORD']; // NOT normal password
     $mail->SMTPSecure = 'tls';
-    $mail->Port       = 587;
+    $mail->Port       = $_ENV['PORT'];
 
-    $mail->setFrom('jaspreet9322@gmail.com', 'Quiz World');
+    $mail->setFrom($_ENV['USER_NAME'], 'Quiz World');
     $mail->addAddress($to);
 
     $mail->isHTML(true);

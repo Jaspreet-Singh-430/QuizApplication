@@ -2,6 +2,8 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 include("../../connection.php");
 date_default_timezone_set("Asia/Kolkata");
 $hid = $_POST['hid'];
@@ -21,7 +23,7 @@ $data = mysqli_query($conn, $sel);
 $rec = mysqli_fetch_array($data);
 while ($rec = mysqli_fetch_array($data)) {
 
-        $from = "jaspreet9322@gmail.com";
+        $from = $_ENV['USER_NAME'];
         $to = $rec[2];
         // echo $_SESSION['email'];
         $headers = "From:" . $from;
@@ -33,19 +35,19 @@ while ($rec = mysqli_fetch_array($data)) {
          $mail = new PHPMailer(true);
         try {
     $mail->isSMTP();
-    $mail->Host       = 'smtp.gmail.com';
-    $mail->SMTPAuth   = true;
-    $mail->Username   = 'jaspreet9322@gmail.com';
-    $mail->Password   = 'jneg phae blqx dazt'; // NOT normal password
+    $mail->Host=$_ENV['HOST'];
+    $mail->SMTPAuth= true;
+    $mail->Username=$_ENV['USER_NAME'];
+    $mail->Password=$_ENV['PASSWORD']; // NOT normal password
     $mail->SMTPSecure = 'tls';
-    $mail->Port       = 587;
+    $mail->Port=$_ENV['PORT'];
 
-    $mail->setFrom('jaspreet9322@gmail.com', 'Quiz World');
+    $mail->setFrom($_ENV['USER_NAME'], 'Quiz World');
     $mail->addAddress($to);
 
     $mail->isHTML(true);
-    $mail->Subject = $subject;
-    $mail->Body    = $message;
+    $mail->Subject=$subject;
+    $mail->Body=$message;
 
     $mail->send();
     echo 'Message sent';

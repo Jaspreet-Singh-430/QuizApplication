@@ -21,14 +21,15 @@ $message = "Dear $user Your OTP number is $otp";
     $mail = new PHPMailer(true);
     try {
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'jaspreet9322@gmail.com';
-        $mail->Password   = 'jneg phae blqx dazt'; // NOT normal password
-        $mail->SMTPSecure = 'tls';
-        $mail->Port       = 587;
         
-        $mail->setFrom('jaspreet9322@gmail.com', 'Quiz World');
+        $mail->Host       = $_ENV['HOST'];
+        $mail->SMTPAuth   = true;
+        $mail->Username   = $_ENV['USER_NAME'];
+        $mail->Password   = $_ENV['PASSWORD']; // NOT normal password
+        $mail->SMTPSecure = 'tls';
+        $mail->Port       = $_ENV['PORT'];
+        
+        $mail->setFrom($_ENV['USER_NAME'], 'Quiz World');
         $mail->addAddress($to);
         
         $mail->isHTML(true);
