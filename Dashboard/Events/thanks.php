@@ -1,4 +1,7 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
 include("../../connection.php");
 $ques = $_POST['no_of_ques'];
 $event = $_POST['evname'];
@@ -35,10 +38,28 @@ while ($rec = mysqli_fetch_array($data)) {
   $headers = "From:" . $from;
   $subject = "Result of $qname event";
   $message = "Dear $rec[0], Your score is $score out of $total <br>Best regards from Quiz World";
-  if (mail($to, $subject, $message, $headers)) {
-    echo "mail sent successfully";
-  } else
-    echo ("mail send failed");
+   $mail = new PHPMailer(true);
+        try {
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.gmail.com';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'jaspreet9322@gmail.com';
+    $mail->Password   = 'jneg phae blqx dazt'; // NOT normal password
+    $mail->SMTPSecure = 'tls';
+    $mail->Port       = 587;
+
+    $mail->setFrom('jaspreet9322@gmail.com', 'Quiz World');
+    $mail->addAddress($to);
+
+    $mail->isHTML(true);
+    $mail->Subject = $subject;
+    $mail->Body    = $message;
+
+    $mail->send();
+    echo 'Message sent';
+} catch (Exception $e) {
+    echo "Error: {$mail->ErrorInfo}";
+}
 }
 ?>
 <!DOCTYPE html>

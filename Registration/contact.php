@@ -23,6 +23,9 @@
 
 <body>
     <?php
+    use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
     if (isset($_POST["sub"])) {
         $from = $_POST['email'];
         $to = 'jaspreet9322@gmail.com';
@@ -31,10 +34,31 @@
         $subject = $_POST['subject'];
         $user = $_POST['name'];
         $message = "Hi I, $user from this side " . $_POST['message'];
-        if (mail($to, $subject, $message, $headers)) {
-            echo "<script>document.querySelector('.alert').style.visibility='visible'</script>";
-        } else
-            echo ("mail send failed");
+        // if (mail($to, $subject, $message, $headers)) {
+        //     } else
+        //     echo ("mail send failed");
+            $mail = new PHPMailer(true);
+            try {
+                $mail->isSMTP();
+                $mail->Host       = 'smtp.gmail.com';
+                $mail->SMTPAuth   = true;
+                $mail->Username   = 'jaspreet9322@gmail.com';
+                $mail->Password   = 'jneg phae blqx dazt'; // NOT normal password
+                $mail->SMTPSecure = 'tls';
+                $mail->Port       = 587;
+                
+                $mail->setFrom('jaspreet9322@gmail.com', 'Quiz World');
+                $mail->addAddress($to);
+                
+                $mail->isHTML(true);
+                $mail->Subject = $subject;
+                $mail->Body    = $message;
+                
+                $mail->send();
+                echo "<script>document.querySelector('.alert').style.visibility='visible'</script>";
+} catch (Exception $e) {
+    echo "Error: {$mail->ErrorInfo}";
+}
     }
     ?>
     <!-- Navigation Bar -->

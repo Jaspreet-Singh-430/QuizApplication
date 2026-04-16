@@ -1,4 +1,7 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
 include("../../connection.php");
 date_default_timezone_set("Asia/Kolkata");
 session_start();
@@ -173,10 +176,28 @@ session_start();
         $headers = "From:" . $from;
         $subject = "Event Registration";
         $message = "Dear $rec[1] You have been successfully registered in $rec[3] event";
-        if (mail($to, $subject, $message, $headers)) {
-            echo "mail sent successfully";
-        } else
-            echo ("mail send failed");
+         $mail = new PHPMailer(true);
+        try {
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.gmail.com';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'jaspreet9322@gmail.com';
+    $mail->Password   = 'jneg phae blqx dazt'; // NOT normal password
+    $mail->SMTPSecure = 'tls';
+    $mail->Port       = 587;
+
+    $mail->setFrom('jaspreet9322@gmail.com', 'Quiz World');
+    $mail->addAddress($to);
+
+    $mail->isHTML(true);
+    $mail->Subject = $subject;
+    $mail->Body    = $message;
+
+    $mail->send();
+    echo 'Message sent';
+} catch (Exception $e) {
+    echo "Error: {$mail->ErrorInfo}";
+}
     }
     ?>
 </body>
